@@ -5,12 +5,12 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [
-    solidPlugin(),
     WindiCSS({
       scan: {
         fileExtensions: ["html", "js", "ts", "jsx", "tsx"],
       },
     }),
+    solidPlugin() as Plugin,
   ],
   build: {
     target: "esnext",

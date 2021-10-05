@@ -1,17 +1,17 @@
 import type { Component } from "solid-js";
-import { JSX } from "solid-js";
 
 interface PanelProps {
   topColor: string
   name: string,
   hours: number
-  hoursWeek: number
+  hoursLast: number
   icon?: string
+  interval: string
 }
 
-const getHours = (hours) => `${hours}hr${hours > 1 && 's'}`
+const getHours = (hours) => `${hours}hr${hours != 1 ? 's' : ''}`
 
-const Panel: Component<PanelProps> = ({ topColor, name, hours,  hoursWeek, icon }) => {
+const Panel: Component<PanelProps> = ({ topColor, name, hours,  hoursLast, icon, interval }) => {
 
   return (
     <div class='relative text-white'>
@@ -27,7 +27,7 @@ const Panel: Component<PanelProps> = ({ topColor, name, hours,  hoursWeek, icon 
         </div>
         <h1 class='text-5xl'>{getHours(hours)}</h1>
         <div class='text-sm mt-2 text-gray-300'>
-          Last Week - {getHours(hoursWeek)}
+          Last {interval} - {getHours(hoursLast)}
         </div>
       </div>
     </div>
